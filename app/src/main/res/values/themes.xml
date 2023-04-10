@@ -17,5 +17,6 @@
         <!-- 타이틀바, 시스템바 관련 -->
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">false</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

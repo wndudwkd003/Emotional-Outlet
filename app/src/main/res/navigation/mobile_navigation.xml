@@ -14,7 +14,7 @@
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.zynar.emotional_outlet.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_search"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
@@ -22,4 +22,10 @@
         android:name="com.zynar.emotional_outlet.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+
+    <fragment
+        android:id="@+id/navigation_my_info"
+        android:name="com.zynar.emotional_outlet.ui.my_info.MyInfoFragment"
+        android:label="@string/title_my_info"
+        tools:layout="@layout/fragment_my_info" />
 </navigation>

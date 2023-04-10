@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="90dp"
         android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,26 +29,77 @@
         android:textSize="25sp"
         android:fontFamily="@font/hum_bums" />
 
+
     <TextView
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/subTitle"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/hum_bums"
         android:gravity="center"
-        android:text="일상, 고민, 질문 익명 대화 커뮤니티\n\n&quot;모든걸 이해한다는 말은 거짓말이지만,\n그래도...\n그래도 여기서 너는 행복했으면&quot;"
         android:lineSpacingExtra="5dp"
-        android:layout_marginTop="20dp"
+        android:text="일상, 고민, 질문 익명 대화 커뮤니티\n\n&quot;너를 기다렸어, 그냥 여기서 다 풀어&quot;"
         android:textSize="16sp"
-        android:fontFamily="@font/hum_bums" />
+        app:layout_constraintTop_toBottomOf="@id/subTitle"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <com.google.android.gms.common.SignInButton
+    <EditText
+        android:layout_marginTop="30dp"
+        android:id="@+id/etInputId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="250dp"
+        app:layout_constraintTop_toBottomOf="@id/content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/etInputPw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etInputId"
+        android:minWidth="250dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:text="이메일로 로그인"
+        android:layout_marginTop="20dp"
         android:id="@+id/btnSignIn"
-        android:layout_marginVertical="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/etInputPw"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content"
+        android:minHeight="55dp"
+        android:minWidth="250dp" />
+
+
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/btnGoogleSignIn"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="20dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSignIn" />
+
+    <TextView
+        android:textSize="18sp"
+        android:layout_marginVertical="30dp"
+        android:gravity="center"
+        android:text="아직 계정이 없으신가요?"
+        android:fontFamily="@font/hum_bums"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:minWidth="250dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogleSignIn" />
 
 
 
