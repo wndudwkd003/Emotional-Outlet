@@ -25,7 +25,7 @@ class OnBoarding3Fragment : Fragment() {
         binding = FragmentOnBoarding3Binding.inflate(inflater, container, false)
 
         binding!!.btnNext.setOnClickListener {
-            val preferences = activity?.getSharedPreferences("asd", Context.MODE_PRIVATE)
+            val preferences = activity?.getPreferences(Context.MODE_PRIVATE)
             preferences!!.edit().putInt(Shared.ON_BOARDING.name, 1).apply()
             val navController = Navigation.findNavController(binding!!.root)
             navController.navigate(R.id.titleFragment)

@@ -46,7 +46,7 @@ class SplashFragment : Fragment() {
     }
 
     private fun isFinished(): Int {
-        val sharedPref = activity?.getSharedPreferences("asd", Context.MODE_PRIVATE)
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
         return sharedPref!!.getInt(Shared.ON_BOARDING.name, 0)
     }
 
