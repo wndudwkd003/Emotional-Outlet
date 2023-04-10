@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.home.write.PostWriteActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:liftOnScroll="true">
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_baseline_close_24"
+            app:titleTextAppearance="?attr/textAppearanceSubtitle1">
+            <TextView
+                android:textColor="@color/black_text"
+                android:fontFamily="@font/hum_bums"
+                android:id="@+id/tvWrite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="25dp"
+                android:text="글쓰기"
+                android:textSize="18sp" />
+        </com.google.android.material.appbar.MaterialToolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" >
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:autoLink="web"
+                android:hint="오늘 하루도 화이팅"
+                android:padding="20dp"
+                android:layout_margin="17dp"
+                android:maxLength="800"
+                android:fontFamily="@font/hum_bums"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:minHeight="300dp"
+                android:gravity="top"
+                android:background="@drawable/bg_edit_text_circle_gray"
+                android:id="@+id/etInputContent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:inputType="textMultiLine|textNoSuggestions" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            <ImageButton
+                android:id="@+id/tbUploadPicture"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:scaleType="fitXY"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
+                android:background="@drawable/ic_baseline_photo_camera_back_24"/>
+            <TextView
+                android:id="@+id/lengthLimit"
+                android:textColor="@color/black_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0/800"
+                android:layout_margin="15dp"
+                android:fontFamily="@font/hum_bums"
+                android:gravity="center_vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cbAnonymous" />
+            <CheckBox
+                android:textSize="16sp"
+                android:fontFamily="@font/hum_bums"
+                android:layout_margin="10dp"
+                android:id="@+id/cbAnonymous"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="익명"
+                android:textColor="@color/black_text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>

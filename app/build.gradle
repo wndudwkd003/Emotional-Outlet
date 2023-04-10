@@ -53,4 +53,10 @@ dependencies {
     // 구글 로그인
     implementation 'com.google.android.gms:play-services-auth:20.5.0'
 
+    // Gson
+    implementation 'com.google.code.gson:gson:2.10.1'
+
+    // okhttp3
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+
 }
