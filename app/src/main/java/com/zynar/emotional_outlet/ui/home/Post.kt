@@ -22,10 +22,10 @@ class Post {
     @SerializedName("reply_count")
     var replyCount: Int = 0 // 댓글 개수
     @SerializedName("is_deleted")
-    var isDeleted: Boolean = false // 삭제 플래그
+    var isDeleted: Int = 0 // 삭제 플래그
     @SerializedName("post_type")
     var type: Int = 0 // 게시글 타입
     @SerializedName("is_anonymous")
-    var isAnonymous: Boolean = false // 익명
+    var isAnonymous: Int = 0 // 익명
 
 }

@@ -4,7 +4,7 @@ import android.util.Log
 import okhttp3.*
 import java.io.IOException
 
-class ServerConnectionHelper(url: String) {
+class ServerConnectionHelper(url: String, data: HashMap<String, String>) {
     private var serverUrl = "http://192.168.0.5:443"
 
     private val client: OkHttpClient = OkHttpClient()
@@ -23,7 +23,14 @@ class ServerConnectionHelper(url: String) {
         serverUrl += url
 
         val builder = FormBody.Builder()
+
+        val keys = data.keys
+        for (key in keys) {
+            builder.add(key, data[key] ?: "err")
+        }
+
         val requestBody: RequestBody = builder.build()
+
         val request: Request =  Request.Builder()
             .url(serverUrl)
             .post(requestBody)

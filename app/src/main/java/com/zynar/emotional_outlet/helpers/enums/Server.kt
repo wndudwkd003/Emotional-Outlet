@@ -1,4 +1,8 @@
 package com.zynar.emotional_outlet.helpers.enums
 
-enum class Server {
+class Server {
+    companion object {
+        var DOMAIN_VIEW_POST : String = "/views/posts"
+    }
+
 }

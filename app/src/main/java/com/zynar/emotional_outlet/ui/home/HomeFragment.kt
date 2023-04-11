@@ -6,11 +6,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import com.zynar.emotional_outlet.databinding.FragmentHomeBinding
 import com.zynar.emotional_outlet.helpers.ServerConnectionHelper
+import com.zynar.emotional_outlet.helpers.adapters.RecyclerViewPostPreviewAdapter
+import com.zynar.emotional_outlet.helpers.enums.Server
 import com.zynar.emotional_outlet.ui.home.write.PostWriteActivity
 import okhttp3.Call
 import okhttp3.Response
@@ -18,9 +21,6 @@ import okhttp3.Response
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -28,31 +28,40 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
+        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val serverHelper = ServerConnectionHelper("/post/upload")
-        serverHelper.setClientCallBackListener(object : ServerConnectionHelper.ClientCallBackListener {
-            override fun onResponse(call: Call, response: Response) {
-               Log.d("my_emotion", response.body?.string() ?: "실패")
-            }
-
-        })
-
-
-        // 글 쓰기
+        // 글쓰기 버튼
         binding.fabPostWrite.setOnClickListener {
             val intent = Intent(requireContext(), PostWriteActivity::class.java)
             startActivity(intent)
         }
 
+        val data = HashMap<String, String>()
+        data["uid"] = "test_uid"
 
-        //val textView: TextView = binding.textHome
-        homeViewModel.text.observe(viewLifecycleOwner) {
-            //textView.text = it
+        val server = ServerConnectionHelper(Server.DOMAIN_VIEW_POST, data)
+        server.setClientCallBackListener(object : ServerConnectionHelper.ClientCallBackListener {
+            override fun onResponse(call: Call, response: Response) {
+                val json = response.body!!.string()
+                Log.d("__emo", json)
+                val post = Gson().fromJson<List<Post>>(json, object : TypeToken<List<Post>>(){}.type)
+                homeViewModel.setPostList(post)
+            }
+        })
+
+
+
+        // 게시글 리사이클러뷰
+        val rvAdapter = RecyclerViewPostPreviewAdapter(requireContext())
+        binding.rvPostPreview.setHasFixedSize(true)
+        binding.rvPostPreview.adapter = rvAdapter
+
+        homeViewModel.postList.observe(viewLifecycleOwner) {
+            rvAdapter.setItem(it)
         }
+
         return binding.root
     }
 
