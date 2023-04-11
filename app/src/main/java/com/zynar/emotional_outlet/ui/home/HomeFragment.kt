@@ -2,6 +2,7 @@ package com.zynar.emotional_outlet.ui.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +10,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.zynar.emotional_outlet.databinding.FragmentHomeBinding
+import com.zynar.emotional_outlet.helpers.ServerConnectionHelper
 import com.zynar.emotional_outlet.ui.home.write.PostWriteActivity
+import okhttp3.Call
+import okhttp3.Response
 
 class HomeFragment : Fragment() {
 
@@ -28,6 +32,14 @@ class HomeFragment : Fragment() {
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        val serverHelper = ServerConnectionHelper("/post/upload")
+        serverHelper.setClientCallBackListener(object : ServerConnectionHelper.ClientCallBackListener {
+            override fun onResponse(call: Call, response: Response) {
+               Log.d("my_emotion", response.body?.string() ?: "실패")
+            }
+
+        })
 
 
         // 글 쓰기

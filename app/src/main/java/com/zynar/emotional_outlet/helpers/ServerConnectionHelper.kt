@@ -35,7 +35,7 @@ class ServerConnectionHelper(url: String) {
     private fun sendServer(request: Request) {
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
-                TODO("Not yet implemented")
+                Log.e("my_emotion", e.toString())
             }
 
             override fun onResponse(call: Call, response: Response) {
